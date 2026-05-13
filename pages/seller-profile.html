@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seller Profile | Student Essentials</title>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <link rel="stylesheet" href="../css/seller-dashboard.css" />
+  </head>
+  <body>
+    <div class="dashboard-wrapper">
+      <aside class="sidebar">
+        <h3>🏪 Seller Panel</h3>
+        <ul>
+          <li>
+            <a href="seller-profile.html"
+              ><img src="" width="30" height="30" /><span>Profile</span></a
+            >
+          </li>
+          <li>
+            <a href="seller-add-item.html"
+              ><img src="" width="30" height="30" /> <span>Add Item</span></a
+            >
+          </li>
+          <li>
+            <a href="stock-management.html"
+              ><img src="" width="30" height="30" />
+              <span>Manage Stock</span></a
+            >
+          </li>
+          <li>
+            <a href="profit.html"
+              ><img src="" width="30" height="30" />
+              <span>Profit Overview</span></a
+            >
+          </li>
+          <li>
+            <a href="#" id="logoutSeller"
+              ><img src="" width="30" height="30" /><span>Logout</span></a
+            >
+          </li>
+        </ul>
+      </aside>
+      <main class="dashboard-main">
+        <div class="product-form-card">
+          <h2>Seller Profile</h2>
+          <form id="sellerProfileForm">
+            <div class="form-group">
+              <label>Store Name</label>
+              <input type="text" id="storeName" required />
+            </div>
+            <div class="form-group">
+              <label>Contact Email</label>
+              <input type="email" id="sellerEmail" disabled />
+            </div>
+            <div class="form-group">
+              <label>Store Description</label>
+              <textarea id="storeDesc" rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn-primary">Update Profile</button>
+          </form>
+        </div>
+      </main>
+    </div>
+    <script src="../js/common.js"></script>
+    <script>
+      const seller = getCurrentUser();
+      if (!seller || seller.role !== "seller") {
+        alert("Access denied. Please login as seller.");
+        window.location.href = "login.html";
+      }
+
+      // Use email as unique key for seller profile
+      const profileKey = `sellerProfile_${seller.email}`;
+      let sellerProfile = JSON.parse(localStorage.getItem(profileKey)) || {
+        storeName: "",
+        storeDesc: "",
+        email: seller.email,
+      };
+
+      document.getElementById("sellerEmail").value = seller.email;
+      document.getElementById("storeName").value =
+        sellerProfile.storeName || "";
+      document.getElementById("storeDesc").value =
+        sellerProfile.storeDesc || "";
+
+      document
+        .getElementById("sellerProfileForm")
+        .addEventListener("submit", (e) => {
+          e.preventDefault();
+          const updatedProfile = {
+            storeName: document.getElementById("storeName").value,
+            storeDesc: document.getElementById("storeDesc").value,
+            email: seller.email,
+          };
+          localStorage.setItem(profileKey, JSON.stringify(updatedProfile));
+          alert("Profile updated successfully!");
+        });
+
+      document.getElementById("logoutSeller")?.addEventListener("click", () => {
+        logout();
+        window.location.href = "../index.html";
+      });
+    </script>
+  </body>
+</html>

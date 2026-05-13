@@ -1,0 +1,158 @@
+/* ========== GLOBAL STYLES ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #faf3e7; /* Cream */
+  color: #2b2621; /* Espresso Brown */
+  line-height: 1.6;
+}
+
+/* ========== TYPOGRAPHY ========== */
+h1,
+h2,
+h3 {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: #c07a53;
+}
+
+a:hover {
+  color: #9b5e3f;
+}
+
+/* ========== BUTTONS ========== */
+.btn-primary,
+.btn-secondary {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #c07a53;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #9b5e3f;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: #c8b39a;
+  color: #2b2621;
+}
+
+.btn-secondary:hover {
+  background-color: #b59a7a;
+}
+
+/* ========== NAVBAR (shared) ========== */
+.navbar {
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #c07a53;
+  display: flex;
+  align-items: center;
+  gap:10px;
+}
+
+.search-bar input {
+  padding: 8px 15px;
+  border-radius: 30px;
+  border: 1px solid #c8b39a;
+  width: 250px;
+}
+
+.search-bar button {
+  background: #c07a53;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 30px;
+  color: white;
+  cursor: pointer;
+}
+
+.nav-icons a {
+  margin-left: 15px;
+  font-size: 1.2rem;
+}
+
+/* ========== FOOTER ========== */
+footer {
+  background-color: #2b2621;
+  color: #c8b39a;
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 3rem;
+}
+
+/* ========== FORM CARDS ========== */
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 2rem;
+}
+
+.form-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 450px;
+}
+
+.form-card label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 500;
+}
+
+.form-card input,
+.form-card select,
+.form-card textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #c8b39a;
+  border-radius: 12px;
+  font-family: inherit;
+}
+
+.form-card button {
+  margin-top: 1.5rem;
+  width: 100%;
+}

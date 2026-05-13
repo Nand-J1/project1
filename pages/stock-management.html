@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stock Management</title>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <link rel="stylesheet" href="../css/seller.css" />
+  </head>
+  <body>
+    <div class="dashboard-wrapper">
+      <aside class="sidebar">
+        <h3>🏪 Seller Panel</h3>
+        <ul>
+          <li>
+            <a href="seller-profile.html"
+              ><img src="" width="30" height="30" /><span>Profile</span></a
+            >
+          </li>
+          <li>
+            <a href="seller-add-item.html"
+              ><img src="" width="30" height="30" /> <span>Add Item</span></a
+            >
+          </li>
+          <li>
+            <a href="stock-management.html"
+              ><img src="" width="30" height="30" />
+              <span>Manage Stock</span></a
+            >
+          </li>
+          <li>
+            <a href="profit.html"
+              ><img src="" width="30" height="30" />
+              <span>Profit Overview</span></a
+            >
+          </li>
+          <li>
+            <a href="#" id="logoutSeller"
+              ><img src="" width="30" height="30" /><span>Logout</span></a
+            >
+          </li>
+        </ul>
+      </aside>
+      <main class="dashboard-main">
+        <h2>Stock Management</h2>
+        <div id="stockTable"></div>
+      </main>
+    </div>
+    <script src="../js/stock-management.js"></script>
+  </body>
+</html>

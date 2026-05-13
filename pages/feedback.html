@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feedback | Student Essentials</title>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <link rel="stylesheet" href="../css/feedback.css" />
+  </head>
+  <body>
+    <div class="dashboard-wrapper">
+      <aside class="sidebar">
+        <h3>
+          <img src="../assets/more.png" width="30" height="30" />
+          <span>Menu</span>
+        </h3>
+        <ul>
+          <li>
+            <a href="dashboard.html"
+              ><img src="../assets/storefront.png" width="30" height="30" />
+              <span>Shop</span></a
+            >
+          </li>
+          <li>
+            <a href="profile.html"
+              ><img src="../assets/user.png" width="30" height="30" /><span>
+                Profile</span
+              ></a
+            >
+          </li>
+          <li>
+            <a href="cart.html"
+              ><img
+                src="../assets/grocery-store.png"
+                width="30"
+                height="30"
+              /><span>Cart</span></a
+            >
+          </li>
+          <li>
+            <a href="billing.html"
+              ><img src="../assets/bill.png" width="30" height="30" /><span>
+                Billing</span
+              ></a
+            >
+          </li>
+          <li>
+            <a href="feedback.html">
+              <img src="../assets/review.png" width="30" height="30" />
+              <span>Feedback</span></a
+            >
+          </li>
+          <li>
+            <a href="query.html">
+              <img src="../assets/question.png" width="30" height="30" /><span
+                >Query</span
+              ></a
+            >
+          </li>
+          <li>
+            <a href="#" id="logoutBtn"
+              ><img src="../assets/logout.png" width="30" height="30" />
+              <span>Logout</span></a
+            >
+          </li>
+        </ul>
+      </aside>
+
+      <main class="dashboard-main">
+        <div class="form-container">
+          <div class="form-card">
+            <h2>Share Your Feedback</h2>
+            <form id="feedbackForm">
+              <label>Rating (1-5)</label>
+              <select id="rating">
+                <option>5 - Excellent</option>
+                <option>4 - Good</option>
+                <option>3 - Average</option>
+                <option>2 - Poor</option>
+                <option>1 - Terrible</option>
+              </select>
+
+              <label>Message</label>
+              <textarea
+                rows="4"
+                id="feedbackMsg"
+                placeholder="Tell us about your experience..."
+              ></textarea>
+
+                <button type="submit" class="btn-primary">Submit Feedback</button>
+            </form>
+            <h3>Recent Feedback</h3>
+            <div id="feedbackList"></div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="../js/common.js"></script>
+    <script>
+      function loadFeedback() {
+        const feedbacks = JSON.parse(localStorage.getItem("feedbacks") || "[]");
+        const container = document.getElementById("feedbackList");
+        container.innerHTML = feedbacks
+          .slice(-5)
+          .reverse()
+          .map(
+            (f) =>
+              `<div class="feedback-item"><strong>⭐ ${f.rating}</strong><p>${f.message}</p><small>${f.date}</small></div>`,
+          )
+          .join("");
+      }
+      document
+        .getElementById("feedbackForm")
+        .addEventListener("submit", (e) => {
+          e.preventDefault();
+          const rating = document.getElementById("rating").value;
+          const message = document.getElementById("feedbackMsg").value;
+          if (!message) return alert("Please enter a message");
+          const feedbacks = JSON.parse(
+            localStorage.getItem("feedbacks") || "[]",
+          );
+          feedbacks.push({
+            rating,
+            message,
+            date: new Date().toLocaleString(),
+          });
+          localStorage.setItem("feedbacks", JSON.stringify(feedbacks));
+          alert("Thank you for your feedback!");
+          document.getElementById("feedbackMsg").value = "";
+          loadFeedback();
+        });
+      loadFeedback();
+      attachLogout();
+      document.querySelector('a[href="feedback.html"]').classList.add("active");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,112 @@
+/* Shared Seller Panel Styles (for seller-profile, add-item, stock, profit) */
+.seller-dashboard {
+  background: #faf3e7;
+}
+
+.seller-stats {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.seller-stat-card {
+  background: white;
+  padding: 1rem 1.5rem;
+  border-radius: 20px;
+  flex: 1;
+  min-width: 150px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.seller-stat-card .number {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #c07a53;
+}
+
+/* Stock Table */
+.stock-table {
+  background: white;
+  border-radius: 20px;
+  overflow-x: auto;
+}
+
+.stock-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.stock-table th,
+.stock-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #c8b39a;
+}
+
+.stock-table th {
+  background: #c8b39a;
+  color: #2b2621;
+}
+
+.edit-stock-btn,
+.delete-product-btn {
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  margin: 0 4px;
+}
+
+.edit-stock-btn {
+  background: #c07a53;
+  color: white;
+}
+
+.delete-product-btn {
+  background: #e74c3c;
+  color: white;
+}
+
+/* Profit Card */
+.profit-card {
+  background: white;
+  border-radius: 28px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.profit-amount {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #c07a53;
+  margin: 1rem 0;
+}
+
+.sales-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+/* Product Form (for add/edit) */
+.product-form {
+  background: white;
+  border-radius: 24px;
+  padding: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.product-form input,
+.product-form select,
+.product-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0 16px;
+  border: 1px solid #c8b39a;
+  border-radius: 12px;
+}

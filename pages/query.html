@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Raise a Query | Student Essentials</title>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <link rel="stylesheet" href="../css/query.css" />
+  </head>
+  <body>
+    <div class="dashboard-wrapper">
+      <aside class="sidebar">
+        <h3>
+          <img src="../assets/more.png" width="30" height="30" />
+          <span>Menu</span>
+        </h3>
+        <ul>
+          <li>
+            <a href="dashboard.html"
+              ><img src="../assets/storefront.png" width="30" height="30" />
+              <span>Shop</span></a
+            >
+          </li>
+          <li>
+            <a href="profile.html"
+              ><img src="../assets/user.png" width="30" height="30" /><span>
+                Profile</span
+              ></a
+            >
+          </li>
+          <li>
+            <a href="cart.html"
+              ><img
+                src="../assets/grocery-store.png"
+                width="30"
+                height="30"
+              /><span>Cart</span></a
+            >
+          </li>
+          <li>
+            <a href="billing.html"
+              ><img src="../assets/bill.png" width="30" height="30" /><span>
+                Billing</span
+              ></a
+            >
+          </li>
+          <li>
+            <a href="feedback.html">
+              <img src="../assets/review.png" width="30" height="30" />
+              <span>Feedback</span></a
+            >
+          </li>
+          <li>
+            <a href="query.html">
+              <img src="../assets/question.png" width="30" height="30" /><span
+                >Query</span
+              ></a
+            >
+          </li>
+          <li>
+            <a href="#" id="logoutBtn"
+              ><img src="../assets/logout.png" width="30" height="30" />
+              <span>Logout</span></a
+            >
+          </li>
+        </ul>
+      </aside>
+      <main class="dashboard-main">
+        <div class="form-container">
+          <div class="form-card">
+            <h2>Raise a Support Query</h2>
+            <form id="queryForm">
+              <label>Subject</label>
+              <input type="text" id="querySubject" required />
+              <label>Message</label>
+              <textarea rows="4" id="queryMsg" required></textarea>
+              <button type="submit" class="btn-primary">Submit Query</button>
+            </form>
+            <div id="queryHistory"></div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="../js/common.js"></script>
+    <script>
+      function loadQueries() {
+        const queries = JSON.parse(localStorage.getItem("userQueries") || "[]");
+        const container = document.getElementById("queryHistory");
+        if (queries.length === 0) {
+          container.innerHTML =
+            '<div class="empty-queries">No queries submitted yet.</div>';
+          return;
+        }
+        container.innerHTML = queries
+          .map(
+            (q, index) => `
+    <div class="query-item">
+      <div class="query-subject">
+        <span> ${q.subject}</span>
+        <small class="query-date">${q.date}</small>
+      </div>
+      <div class="query-message">${q.message}</div>
+    </div>
+  `,
+          )
+          .join("");
+      }
+      function loadQueries() {
+        const queries = JSON.parse(localStorage.getItem("userQueries") || "[]");
+        const container = document.getElementById("queryHistory");
+        container.innerHTML = queries
+          .map(
+            (q) =>
+              `<div><strong>${q.subject}</strong><p>${q.message}</p><small>${q.date}</small></div>`,
+          )
+          .join("");
+      }
+      document.getElementById("queryForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const subject = document.getElementById("querySubject").value;
+        const message = document.getElementById("queryMsg").value;
+        const queries = JSON.parse(localStorage.getItem("userQueries") || "[]");
+        queries.push({ subject, message, date: new Date().toLocaleString() });
+        localStorage.setItem("userQueries", JSON.stringify(queries));
+        alert("Query submitted");
+        document.getElementById("queryForm").reset();
+        loadQueries();
+      });
+      loadQueries();
+      attachLogout();
+      document.querySelector('a[href="query.html"]').classList.add("active");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | Student Essentials</title>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/auth.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="../index.html" class="logo">📚 StudentEssentials</a>
+      </div>
+    </nav>
+
+    <div class="form-container">
+      <div class="form-card">
+        <h2>Welcome Back</h2>
+        <form id="loginForm">
+          <label>Email</label>
+          <input type="email" id="loginEmail" required />
+
+          <label>Password</label>
+          <input type="password" id="loginPassword" required />
+
+          <button type="submit" class="btn-primary">Login</button>
+          <p><a href="reset-password.html">Forgot password?</a></p>
+          <p>New here? <a href="register.html">Create an account</a></p>
+        </form>
+      </div>
+    </div>
+
+    <script src="../js/common.js"></script>
+    <script>
+      document.getElementById("loginForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const email = document.getElementById("loginEmail").value;
+        const pwd = document.getElementById("loginPassword").value;
+
+        const user = loginUser(email, pwd);
+        if (user) {
+          alert(`Welcome ${user.name}!`);
+          if (user.role === "seller") {
+            window.location.href = "seller-profile.html";
+          } else {
+            window.location.href = "dashboard.html";
+          }
+        } else {
+          alert("Invalid credentials");
+        }
+      });
+    </script>
+  </body>
+</html>

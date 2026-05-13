@@ -1,0 +1,138 @@
+/* Additional styles for Buyer Dashboard Shopping Interface */
+.dashboard-products {
+  margin-top: 2rem;
+}
+
+.filter-section {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  background: white;
+  padding: 1rem;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filter-group select,
+.filter-group input {
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid #c8b39a;
+  background: white;
+}
+
+.price-range {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.cart-summary-card {
+  background: white;
+  border-radius: 20px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.cart-summary-card a {
+  background: #c07a53;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.cart-summary-card a:hover {
+  background: #9b5e3f;
+}
+
+/* My Orders Section */
+.orders-section {
+  margin-top: 2rem;
+  background: white;
+  border-radius: 24px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.orders-section h3 {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.order-item {
+  border-bottom: 1px solid #eee;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #c07a53;
+}
+
+.order-details {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.order-product-list {
+  margin-top: 0.5rem;
+  padding-left: 1rem;
+  font-size: 0.85rem;
+}
+
+.order-status {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 20px;
+  background: #e8f5e9;
+  color: #2e7d32;
+  font-size: 0.75rem;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.product-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s;
+}
+
+.product-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.product-info {
+  padding: 1rem;
+}
+.product-card img {
+  background-color: #f0f0f0;
+}

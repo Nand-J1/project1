@@ -1,0 +1,49 @@
+/* Billing Page Styles */
+.billing-wrapper {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.billing-card {
+  background: white;
+  border-radius: 28px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.billing-items {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: #faf3e7;
+  border-radius: 20px;
+}
+
+.billing-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px dashed #c8b39a;
+}
+
+.billing-total {
+  font-size: 1.3rem;
+  text-align: right;
+  margin: 1rem 0;
+  padding-top: 0.5rem;
+  border-top: 2px solid #c07a53;
+}
+
+#billingForm input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #c8b39a;
+  border-radius: 16px;
+}
+
+#billingForm .btn-primary {
+  width: 100%;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+}

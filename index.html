@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>Student Essentials Store | Home</title>
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/home.css" />
+  </head>
+  <body>
+    <!-- Top Navbar -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="logo">
+          <img src="assets/stationary.png" width="40" height="40" alt="Logo" />
+          <span>DeskAura</span>
+        </a>
+        <div class="search-bar">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search stationery, gadgets..."
+          />
+          <button id="searchBtn">🔍</button>
+        </div>
+        <div class="nav-icons">
+          <a href="pages/cart.html" class="cart-icon"
+            >🛒 <span id="cartCount">0</span></a
+          >
+          <a href="pages/login.html" class="user-icon">👤</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Your Academic Arsenal</h1>
+        <p>Stationery | Gadgets | Accessories | Study Materials</p>
+        <a href="#products" class="btn-primary">Shop Now</a>
+      </div>
+    </section>
+
+    <!-- Category Filter Bar -->
+    <div class="category-bar">
+      <button class="filter-btn active" data-category="all">All</button>
+      <button class="filter-btn" data-category="stationery">
+        ✏️ Stationery
+      </button>
+      <button class="filter-btn" data-category="gadgets">💻 Gadgets</button>
+      <button class="filter-btn" data-category="accessories">
+        🎧 Accessories
+      </button>
+      <button class="filter-btn" data-category="study">
+        📖 Study Materials
+      </button>
+    </div>
+
+    <!-- Product Grid -->
+    <section class="product-grid" id="productGrid">
+      <!-- Products injected dynamically via JS -->
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Student Essentials Store | Study. Save. Succeed.</p>
+    </footer>
+
+    <script src="js/common.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        renderProductGrid("all");
+        updateCartCountDisplay();
+        setupCategoryFilters();
+        setupSearch();
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Profile | Student Essentials</title>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <link rel="stylesheet" href="../css/profile.css" />
+  </head>
+  <body>
+    <div class="dashboard-wrapper">
+      <!-- Sidebar (consistent with dashboard) -->
+      <aside class="sidebar">
+        <h3>
+          <img src="../assets/more.png" width="30" height="30" />
+          <span>Menu</span>
+        </h3>
+        <ul>
+          <li>
+            <a href="dashboard.html"
+              ><img
+                src="../assets/storefront.png"
+                width="30"
+                height="30"
+              /><span>Shop</span></a
+            >
+          </li>
+          <li>
+            <a href="profile.html"
+              ><img src="../assets/user.png" width="30" height="30" /><span
+                >Profile</span
+              ></a
+            >
+          </li>
+          <li>
+            <a href="cart.html"
+              ><img
+                src="../assets/grocery-store.png"
+                width="30"
+                height="30"
+              /><span>Cart</span></a
+            >
+          </li>
+          <li>
+            <a href="billing.html"
+              ><img src="../assets/bill.png" width="30" height="30" /><span
+                >Billing</span
+              ></a
+            >
+          </li>
+          <li>
+            <a href="feedback.html"
+              ><img src="../assets/review.png" width="30" height="30" /><span
+                >Feedback</span
+              ></a
+            >
+          </li>
+          <li>
+            <a href="query.html"
+              ><img src="../assets/question.png" width="30" height="30" /><span
+                >Query</span
+              ></a
+            >
+          </li>
+          <li>
+            <a href="#" id="logoutBtn"
+              ><img src="../assets/logout.png" width="30" height="30" /><span
+                >Logout</span
+              ></a
+            >
+          </li>
+        </ul>
+      </aside>
+
+      <main class="dashboard-main">
+        <div class="profile-container">
+          <!-- Left Column: Edit Profile Form -->
+          <div class="profile-form-card">
+            <h2>Edit Profile</h2>
+            <form id="profileForm">
+              <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" id="profileName" required />
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="profileEmail" disabled />
+              </div>
+              <button type="submit" class="btn-primary">Update Profile</button>
+            </form>
+            <hr />
+            <button id="resetPasswordRedirect" class="btn-secondary">
+              Reset Password
+            </button>
+          </div>
+
+          <!-- Right Column: Order History -->
+          <div class="order-history-card">
+            <h2>📦 My Orders</h2>
+            <div id="orderHistoryList" class="order-history-list">
+              <!-- Orders will be injected here -->
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="../js/common.js"></script>
+    <script>
+      const current = getCurrentUser();
+      if (!current) window.location.href = "login.html";
+
+      // Populate profile form
+      document.getElementById("profileName").value = current.name;
+      document.getElementById("profileEmail").value = current.email;
+
+      // Update profile
+      document.getElementById("profileForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const newName = document.getElementById("profileName").value;
+        updateUserName(current.email, newName);
+        alert("Profile updated");
+        window.location.reload();
+      });
+
+      // Redirect to reset password
+      document
+        .getElementById("resetPasswordRedirect")
+        .addEventListener("click", () => {
+          window.location.href = "reset-password.html";
+        });
+
+      // Load and display order history
+      function renderOrderHistory() {
+        const container = document.getElementById("orderHistoryList");
+        if (!container) return;
+
+        const orders = getUserOrders(current.email);
+        if (orders.length === 0) {
+          container.innerHTML =
+            '<p class="empty-orders">You haven’t placed any orders yet. <a href="dashboard.html">Start shopping</a></p>';
+          return;
+        }
+
+        container.innerHTML = orders
+          .map(
+            (order) => `
+        <div class="order-card">
+          <div class="order-header">
+            <span class="order-id">Order #${order.id}</span>
+            <span class="order-date">${new Date(order.date).toLocaleDateString()}</span>
+            <span class="order-status ${order.status}">${order.status}</span>
+          </div>
+          <div class="order-items">
+            ${order.items
+              .map(
+                (item) => `
+              <div class="order-item">
+                <span>${item.name} x ${item.quantity}</span>
+                <span>₹${item.price * item.quantity}</span>
+              </div>
+            `,
+              )
+              .join("")}
+          </div>
+          <div class="order-total">
+            <strong>Total: ₹${order.total}</strong>
+          </div>
+        </div>
+      `,
+          )
+          .join("");
+      }
+
+      renderOrderHistory();
+      attachLogout();
+    </script>
+  </body>
+</html>

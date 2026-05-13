@@ -1,0 +1,52 @@
+/* Feedback Page Styles */
+.feedback-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.feedback-form-card {
+  background: white;
+  border-radius: 24px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.rating-stars {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.star {
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #c8b39a;
+  transition: 0.2s;
+}
+
+.star.selected {
+  color: #c07a53;
+}
+
+.feedback-list {
+  background: white;
+  border-radius: 24px;
+  padding: 1rem;
+}
+
+.feedback-item {
+  border-bottom: 1px solid #eee;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.feedback-item strong {
+  color: #c07a53;
+}
+
+.feedback-item small {
+  color: #999;
+  font-size: 0.8rem;
+}
