@@ -1,1 +1,1 @@
-# project1
+# Student Essential Store
